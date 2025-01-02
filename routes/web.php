@@ -101,6 +101,15 @@ Route::group(['prefix'=> 'blog', 'as'=>'blog.'], function (){
 // });
 
 
+Route::get('/contact', function (){
+    return view('contact.index');
+});
+
+
+
+
+
+
 // Fallback route
 
 Route::fallback(function () {
