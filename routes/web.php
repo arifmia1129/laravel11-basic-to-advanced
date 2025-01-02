@@ -46,56 +46,63 @@ Route::group(['prefix'=> 'blog', 'as'=>'blog.'], function (){
 
 
 // Get method
-Route::get('/users', function () {
-    return;
-});
+// Route::get('/users', function () {
+//     return;
+// });
 
-// Post method
-Route::post('/users', function () {
-    // Insert data into database
-    $user =[
-        'name' => request('name'),
-        'email' => request('email'),
-        'password' => bcrypt(request('password')),
-    ];
-    $user->name = request('name');
-    $user->email = request('email');
-    $user->password = bcrypt(request('password'));
-    $user->save();
+// // Post method
+// Route::post('/users', function () {
+//     // Insert data into database
+//     $user =[
+//         'name' => request('name'),
+//         'email' => request('email'),
+//         'password' => bcrypt(request('password')),
+//     ];
+//     $user->name = request('name');
+//     $user->email = request('email');
+//     $user->password = bcrypt(request('password'));
+//     $user->save();
 
-    return redirect()->route('users.index');
-});
-
-
-// Put method
-Route::put('/users/{id}', function ($id) {
-    $user = User::find($id);
-    $user->name = request('name');
-    $user->email = request('email');
-    $user->password = bcrypt(request('password'));
-    $user->save();
-
-    return redirect()->route('users.index');
-});
+//     return redirect()->route('users.index');
+// });
 
 
-// Patch method
-Route::patch('/users/{id}', function ($id) {
-    $user = User::find($id);
-    $user->update([
-        'name' => request('name'),
-        'email' => request('email'),
-        'password' => bcrypt(request('password')),
-    ]);
+// // Put method
+// Route::put('/users/{id}', function ($id) {
+//     $user = User::find($id);
+//     $user->name = request('name');
+//     $user->email = request('email');
+//     $user->password = bcrypt(request('password'));
+//     $user->save();
 
-    return redirect()->route('users.index');
-});
+//     return redirect()->route('users.index');
+// });
 
 
-// Delete method
-Route::delete('/users/{id}', function ($id) {
-    $user = User::find($id);
-    $user->delete();
+// // Patch method
+// Route::patch('/users/{id}', function ($id) {
+//     $user = User::find($id);
+//     $user->update([
+//         'name' => request('name'),
+//         'email' => request('email'),
+//         'password' => bcrypt(request('password')),
+//     ]);
 
-    return redirect()->route('users.index');
+//     return redirect()->route('users.index');
+// });
+
+
+// // Delete method
+// Route::delete('/users/{id}', function ($id) {
+//     $user = User::find($id);
+//     $user->delete();
+
+//     return redirect()->route('users.index');
+// });
+
+
+// Fallback route
+
+Route::fallback(function () {
+    return 'Ups! Search results are not available';
 });
