@@ -30,3 +30,72 @@ Route::group(['prefix'=> 'blog', 'as'=>'blog.'], function (){
         return 'Delete blog post with id: '. $id;
     })->name('delete');
 });
+
+
+// Route methods
+
+/**
+ * Get -> Getting data from database
+ * Post -> Insert data into database
+ * Put -> Update data for whole row
+ * Patch -> Update data for specific column in row
+ * Delete -> Delete data from database
+*/
+
+// Example of Route methods
+
+
+// Get method
+Route::get('/users', function () {
+    return;
+});
+
+// Post method
+Route::post('/users', function () {
+    // Insert data into database
+    $user =[
+        'name' => request('name'),
+        'email' => request('email'),
+        'password' => bcrypt(request('password')),
+    ];
+    $user->name = request('name');
+    $user->email = request('email');
+    $user->password = bcrypt(request('password'));
+    $user->save();
+
+    return redirect()->route('users.index');
+});
+
+
+// Put method
+Route::put('/users/{id}', function ($id) {
+    $user = User::find($id);
+    $user->name = request('name');
+    $user->email = request('email');
+    $user->password = bcrypt(request('password'));
+    $user->save();
+
+    return redirect()->route('users.index');
+});
+
+
+// Patch method
+Route::patch('/users/{id}', function ($id) {
+    $user = User::find($id);
+    $user->update([
+        'name' => request('name'),
+        'email' => request('email'),
+        'password' => bcrypt(request('password')),
+    ]);
+
+    return redirect()->route('users.index');
+});
+
+
+// Delete method
+Route::delete('/users/{id}', function ($id) {
+    $user = User::find($id);
+    $user->delete();
+
+    return redirect()->route('users.index');
+});
