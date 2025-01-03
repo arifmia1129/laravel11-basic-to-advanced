@@ -101,8 +101,27 @@ Route::group(['prefix'=> 'blog', 'as'=>'blog.'], function (){
 // });
 
 
-Route::get('/contact', function (){
-    return view('contact.index');
+Route::get('/contact/{country}', function ($country){
+    
+    $all_emails = [
+        'bangladesh' => 'contact@bangladesh.com',
+        'indonesia' => 'contact@indonesia.com',
+        'usa' => 'contact@usa.com',
+    ];
+
+    $available_countries = [
+        'bangladesh',
+        'indonesia',
+        'usa',
+        'japan',
+        'china',
+        'korea',
+        'russia',
+        'germany',
+        'australia',
+    ];
+
+    return view('contact.index', ['country' => $country, 'all_emails' => $all_emails, 'available_countries' => $available_countries]);
 });
 
 Route::get('/about', function() {

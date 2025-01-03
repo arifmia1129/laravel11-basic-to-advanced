@@ -7,19 +7,30 @@
     <title>Contact</title>
 </head>
 
-@php
-    $country = 'India';
-@endphp
-
 <body>
     <h2>Assalamu Alaikum, We are always ready to hear from you!</h2>
 
-    <p>Please contact us at <a href="mailto:contact@example.com">contact@example.com</a></p>
+    <p>Please contact us at</p>
+    <ul>
+    @foreach ($all_emails as $country => $email)
+        <li><a href="mailto:{{ $email }}">{{ $country }}</a></li>
+    @endforeach
+    </ul>
 
-    @if ($country == 'Bangladesh')
+    <p>We are available in:</p>
+    <ul>
+        @for ($i = 0; $i < count($available_countries); $i++)
+         <li>{{ $available_countries[$i] }}</li>
+        @endfor
+
+       
+
+    </ul>
+
+    @if (Str::lower($country) == 'bangladesh')
         <p>You can direct call to: +8801723112233</p>
     @else
-        <p>Your current location is: {{ $country }}</p>
+        <p>Your current location is: {{ Str::upper($country) }}</p>
         <p>Sorry! We have not contact number for your location! Email us.</p>
     @endif
 </body>

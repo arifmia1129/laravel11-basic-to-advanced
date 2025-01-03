@@ -12,9 +12,6 @@
     <p>My routes:</p>
     <ul>
         <li>
-            <a href="{{ route('about.me') }}">About Me</a>
-        </li>
-        <li>
             <a href="{{ route('user.details', [
             'id'=> 1,
             'role'=> 'Admin'
