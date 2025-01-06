@@ -22,3 +22,11 @@
     </div>
   </div>
 @endsection
+
+@push('scripts')
+  <script>
+    $(document).ready(function () {
+      alert('Welcome to homepage!')
+    })
+  </script>
+@endpush

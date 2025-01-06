@@ -20,3 +20,13 @@
   </section>
 
 @endsection
+
+@push('scripts')
+  <script>
+    $(document).ready(function () {
+      console.log('Loading...');
+
+      alert('This is my about page...');
+    })
+  </script>
+@endpush
