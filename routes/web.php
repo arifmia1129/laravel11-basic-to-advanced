@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 
 Route::get('/about', function () {
@@ -124,9 +123,7 @@ Route::get('/contact/{country}', function ($country){
     return view('contact.index', ['country' => $country, 'all_emails' => $all_emails, 'available_countries' => $available_countries]);
 });
 
-Route::get('/about', function() {
-    return view('about.index');
-});
+Route::get('/about', [HomeController::class, 'about']);
 
 
 
