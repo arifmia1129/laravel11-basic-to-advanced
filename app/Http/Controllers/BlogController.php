@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,7 +12,14 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return 'Welcome to resource routes and controllers';
+       $blogs = Blog::all();
+
+       return response()->json([
+            "success" => true,
+            "message" => "Successfully retrieved all blogs",
+            "data" => $blogs
+       ]);
+
     }
 
     /**
