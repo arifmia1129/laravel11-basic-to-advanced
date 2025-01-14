@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SingleActionController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -132,6 +133,8 @@ Route::get('/single-action', SingleActionController::class);
 
 
 Route::resource('/blog', BlogController::class);
+
+Route::get('/student', [StudentController::class, 'index']);
 
 
 // Fallback route
