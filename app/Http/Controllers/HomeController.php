@@ -32,10 +32,24 @@ class HomeController extends Controller
         $users = DB::table('users')->pluck('email', 'id');
 
 
+        $max_age = DB::table('users')->max('age');
+        $min_age = DB::table('users')->min('age');
+        $average_age = DB::table('users')->avg('age');
+        $total_users = DB::table('users')->count();
+        $sum_age = DB::table('users')->sum('age');
+
+        $data = [
+            'MAX_AGE' => $max_age,
+            'MIN_AGE'=> $min_age,
+            'AVG_AGE'=> $average_age,
+            'totalUser'=> $total_users,
+            'sumAge'=> $sum_age
+        ];
+
         return response()->json([
             'success' => true,
-            'message' => 'Successfully selected users information',
-            'data' => $users,
+            'message' => 'Successfully aggregated user information',
+            'data' => $data,
         ]);
         
     }
