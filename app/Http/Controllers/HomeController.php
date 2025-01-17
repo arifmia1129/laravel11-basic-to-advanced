@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index () {
-
+        // Retrieve all users from the database
         $all_users = DB::table('users')->get();
+
+        // Retrieve user by ID 
+        $user = DB::table('users')->where('id', 1)->first();
 
         return response()->json([
             'success' => true,
-            'message' => 'Successfully retrieved all users information',
-            'data' => $all_users,
+            'message' => 'Successfully retrieved user information',
+            'data' => $user,
         ]);
         
     }
