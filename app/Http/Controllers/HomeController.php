@@ -26,13 +26,16 @@ class HomeController extends Controller
         // $updated_user = DB::table('users')->where('id', $user_id)->first();
 
         // Delete user information
-        DB::table('users')->where('id', $user_id)->delete();
+        // DB::table('users')->where('id', $user_id)->delete();
+
+        // Select user information
+        $users = DB::table('users')->pluck('email', 'id');
 
 
         return response()->json([
             'success' => true,
-            'message' => 'Successfully deleted user information',
-            'data' => $user,
+            'message' => 'Successfully selected users information',
+            'data' => $users,
         ]);
         
     }
