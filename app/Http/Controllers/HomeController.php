@@ -17,18 +17,22 @@ class HomeController extends Controller
         $user = DB::table('users')->where('id', $user_id)->first();
 
         // Update user information by ID
-        DB::table('users')->where('id', $user_id)->update([
-            'name'=> 'Arif',
-            'email'=> 'arif@example.com',
-            'password'=> bcrypt('password'),
-        ]);
+        // DB::table('users')->where('id', $user_id)->update([
+        //     'name'=> 'Arif',
+        //     'email'=> 'arif@example.com',
+        //     'password'=> bcrypt('password'),
+        // ]);
 
-        $updated_user = DB::table('users')->where('id', $user_id)->first();
+        // $updated_user = DB::table('users')->where('id', $user_id)->first();
+
+        // Delete user information
+        DB::table('users')->where('id', $user_id)->delete();
+
 
         return response()->json([
             'success' => true,
-            'message' => 'Successfully retrieved user information',
-            'data' => $updated_user,
+            'message' => 'Successfully deleted user information',
+            'data' => $user,
         ]);
         
     }
