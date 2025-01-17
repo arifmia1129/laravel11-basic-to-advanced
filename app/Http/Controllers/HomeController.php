@@ -11,13 +11,24 @@ class HomeController extends Controller
         // Retrieve all users from the database
         $all_users = DB::table('users')->get();
 
+        $user_id = 1;
+
         // Retrieve user by ID 
-        $user = DB::table('users')->where('id', 1)->first();
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        // Update user information by ID
+        DB::table('users')->where('id', $user_id)->update([
+            'name'=> 'Arif',
+            'email'=> 'arif@example.com',
+            'password'=> bcrypt('password'),
+        ]);
+
+        $updated_user = DB::table('users')->where('id', $user_id)->first();
 
         return response()->json([
             'success' => true,
             'message' => 'Successfully retrieved user information',
-            'data' => $user,
+            'data' => $updated_user,
         ]);
         
     }
