@@ -56,18 +56,28 @@ class HomeController extends Controller
 
         // Eloquent ORM
 
-        $user = new User();
+        // $user = new User();
 
-        $user->name = 'Arif';
-        $user->email = 'me@arif.com';
-        $user->password = bcrypt('mepassword'); 
-        $user->age = 12.34;
+        // $user->name = 'Arif';
+        // $user->email = 'me@arif.com';
+        // $user->password = bcrypt('mepassword'); 
+        // $user->age = 12.34;
 
-        $user->save();
+        // $user->save();
+
+        $users = User::all();
+
+        // foreach($users as $user) {
+        //     echo 'Name: ' . $user->name. ' ' . 'Email: ', $user->email;
+        //     echo '<br>';
+        // }
+
+        // $user = User::where('id', 2)->first();
+        $user = User::find(2);
 
         return response()->json([
             'success' => true,
-           'message' => 'User created successfully',
+           'message' => 'Successfully retrieved  user',
            'data' => $user,
         ]);
         
