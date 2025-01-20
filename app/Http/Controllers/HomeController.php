@@ -73,11 +73,19 @@ class HomeController extends Controller
         // }
 
         // $user = User::where('id', 2)->first();
-        $user = User::find(2);
+        // $user = User::find(2);
+
+        // $user = User::where('id', 3)->first();
+        $user = User::find(3);
+
+        $user->name = 'Arif';
+        $user->email = 'arif@gmail.com';
+
+        $user->save();
 
         return response()->json([
             'success' => true,
-           'message' => 'Successfully retrieved  user',
+           'message' => 'Successfully updated  user',
            'data' => $user,
         ]);
         
