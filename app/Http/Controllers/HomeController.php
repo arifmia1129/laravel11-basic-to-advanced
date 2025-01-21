@@ -78,14 +78,20 @@ class HomeController extends Controller
         // $user = User::where('id', 3)->first();
         $user = User::find(3);
 
-        $user->name = 'Arif';
-        $user->email = 'arif@gmail.com';
+        // $user->name = 'Arif';
+        // $user->email = 'arif@gmail.com';
 
-        $user->save();
+        // $user->save();
+
+        // $user->delete();
+
+        $user =User::findOrFail(5);
+
+        $user->delete();
 
         return response()->json([
             'success' => true,
-           'message' => 'Successfully updated  user',
+           'message' => 'Successfully deleted  user',
            'data' => $user,
         ]);
         
