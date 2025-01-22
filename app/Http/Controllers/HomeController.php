@@ -85,14 +85,31 @@ class HomeController extends Controller
 
         // $user->delete();
 
-        $user =User::findOrFail(5);
+        // $user =User::findOrFail(5);
 
-        $user->delete();
+        // $user->delete();
+
+        $new_users = [
+            [
+                'name' => 'John',
+                'email' => 'john@example.com',
+                'password' => bcrypt('johnpassword'),
+            ],
+            [
+                'name'=> 'smith',
+                'email'=> 'smith@gmail.com',
+                'password'=> bcrypt('smith'),
+
+            ],
+            
+        ];
+
+        User::insert($new_users);
 
         return response()->json([
             'success' => true,
-           'message' => 'Successfully deleted  user',
-           'data' => $user,
+           'message' => 'Successfully inserted users',
+           'data' => $new_users,
         ]);
         
     }
