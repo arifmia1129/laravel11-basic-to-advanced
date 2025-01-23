@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AllStudent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -104,12 +105,20 @@ class HomeController extends Controller
             
         ];
 
-        User::insert($new_users);
+        // User::insert($new_users);
+
+        // $students = AllStudent::where(['id' => 2, 'student_id'=>'u'])->first();
+
+        // $students = AllStudent::where('name', 'LIKE', '%Mrs.%')->orWhere('name', 'LIKE', '%Ms.%')->get();
+
+        // $students = AllStudent::whereIn('id', [1,5, 6])->get();
+
+        $students = AllStudent::whereBetween('id', [1, 6])->get();
 
         return response()->json([
             'success' => true,
-           'message' => 'Successfully inserted users',
-           'data' => $new_users,
+           'message' => 'Successfully retrieved students',
+           'data' => $students,
         ]);
         
     }
