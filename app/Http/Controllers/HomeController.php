@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllStudent;
+use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -113,12 +114,14 @@ class HomeController extends Controller
 
         // $students = AllStudent::whereIn('id', [1,5, 6])->get();
 
-        $students = AllStudent::whereBetween('id', [1, 6])->get();
+        // $students = AllStudent::whereBetween('id', [1, 6])->get();
+
+        $blogs = Blog::ActiveStatus()->get();
 
         return response()->json([
             'success' => true,
-           'message' => 'Successfully retrieved students',
-           'data' => $students,
+           'message' => 'Successfully retrieved blogs',
+           'data' => $blogs,
         ]);
         
     }
