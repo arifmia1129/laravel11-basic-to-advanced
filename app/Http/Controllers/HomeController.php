@@ -116,12 +116,17 @@ class HomeController extends Controller
 
         // $students = AllStudent::whereBetween('id', [1, 6])->get();
 
-        $blogs = Blog::ActiveStatus()->get();
+        // $blogs = Blog::ActiveStatus()->get();
+
+        // Blog::find(1)->delete();
+
+        // $blogs = Blog::withTrashed()->get();
+        $blogs = Blog::onlyTrashed()->get();
 
         return response()->json([
             'success' => true,
-           'message' => 'Successfully retrieved blogs',
-           'data' => $blogs,
+           'message' => 'Successfully deleted blog',
+            'data' => $blogs,
         ]);
         
     }
