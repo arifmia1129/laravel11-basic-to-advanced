@@ -139,6 +139,7 @@ Route::get('/student', [StudentController::class, 'index']);
 
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 
 // Fallback route

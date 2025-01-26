@@ -9,4 +9,8 @@ class ContactController extends Controller
     function index () {
         return view("contact");
     }
+
+    function submit (Request $request) {
+        return response()->json($request);
+    }
 }

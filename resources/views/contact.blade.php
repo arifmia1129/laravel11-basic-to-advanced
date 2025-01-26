@@ -10,7 +10,8 @@
                     <h3 class="card-title mb-0">Contact Us</h3>
                 </div>
                 <div class="card-body">
-                    <form action="" method="">
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
