@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\StudentController;
@@ -135,6 +136,9 @@ Route::get('/single-action', SingleActionController::class);
 Route::resource('/blog', BlogController::class);
 
 Route::get('/student', [StudentController::class, 'index']);
+
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 
 // Fallback route

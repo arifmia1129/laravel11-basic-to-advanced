@@ -125,7 +125,7 @@ class HomeController extends Controller
 
         // Blog::withTrashed()->find(1)->restore();
 
-        Blog::withTrashed()->find(1)->forceDelete();
+        // Blog::withTrashed()->find(1)->forceDelete();
 
         return response()->json([
             'success' => true,
