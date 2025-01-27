@@ -9,6 +9,13 @@
                 <div class="card-header bg-primary text-white">
                     <h3 class="card-title mb-0">Contact Us</h3>
                 </div>
+                @if ($errors->any()) 
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger mt-2">
+                            <p>{{ $error }}</p>
+                        </div>
+                    @endforeach
+                @endif
                 <div class="card-body">
                     <form action="{{ route('contact.submit') }}" method="POST">
                         @csrf
@@ -18,7 +25,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                         </div>
                         <div class="mb-3">
                             <label for="subject" class="form-label">Subject</label>

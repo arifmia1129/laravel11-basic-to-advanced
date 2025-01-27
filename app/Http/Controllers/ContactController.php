@@ -11,6 +11,12 @@ class ContactController extends Controller
     }
 
     function submit (Request $request) {
+
+        $request->validate([
+            'name'=> 'required|max:20|min:2',
+            'email'=>'required|email'
+        ]);
+
         return response()->json($request);
     }
 }
