@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class FileUploadController extends Controller
 {
     function index (){
-        return view("file-upload");
+        $files = File::orderBy("created_at","desc")->get();
+        // dd($files);
+        return view("file-upload", ['files' => $files]);
     }
 
     function store (Request $request){
@@ -20,6 +23,21 @@ class FileUploadController extends Controller
 
         $res = $file->store('/', 'public');
 
-        return response()->json($res);
+        if($res){
+            $file = new File();
+            $file->file_path = $res;
+            $file->save();
+
+            return response()->json([
+               'success' => true,
+               'message'=> 'File uploaded successfully',
+               'data'=> $file,
+            ]);
+        }else {
+            return response()->json([
+                'success'=> false,
+                'message'=> 'Failed to upload file'
+            ]);
+        }
     }
 }

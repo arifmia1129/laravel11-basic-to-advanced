@@ -23,6 +23,18 @@
                         </div>
                     </form>
                 </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            @foreach ($files as $file)
+                            <td>
+                                <img width="100" src="/storage/{{ $file->file_path }}" alt="">
+                            </td>
+                        @endforeach
+                        </tr>
+                        
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
