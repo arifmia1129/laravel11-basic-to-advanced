@@ -23,7 +23,7 @@
                         </div>
                     </form>
                 </div>
-                <table>
+                <table class="m-2">
                     <tbody>
                         <tr>
                             @foreach ($files as $file)
@@ -31,6 +31,10 @@
                                 <img width="100" src="/storage/{{ $file->file_path }}" alt="">
                             </td>
                         @endforeach
+                        </tr>
+
+                        <tr>
+                            <a href="{{ route('file-upload.download') }}" target="_blank" rel="noopener noreferrer">Download File</a>
                         </tr>
                         
                     </tbody>

@@ -144,6 +144,7 @@ Route::post('/contact', [ContactController::class, 'submit'])->name('contact.sub
 
 Route::get('/file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
 Route::post('/file-upload', [FileUploadController::class,'store'])->name('file-upload.store');
+Route::get('file-download', [FileUploadController::class, 'downloadFile'])->name('file-upload.download');
 // Fallback route
 
 Route::fallback(function () {

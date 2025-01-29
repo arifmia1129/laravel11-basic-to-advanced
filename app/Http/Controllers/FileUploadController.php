@@ -40,4 +40,8 @@ class FileUploadController extends Controller
             ]);
         }
     }
+
+    function downloadFile () {
+        return Storage::disk('local')->download('aNHrtMxjPwEBThnUwnUGZsPliXNi0wnY6ag8mah9.png');
+    }
 }
