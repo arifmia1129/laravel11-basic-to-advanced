@@ -11,7 +11,7 @@
                 </div>
                
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('file-upload.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">File</label>
