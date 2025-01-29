@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\StudentController;
@@ -141,7 +142,7 @@ Route::get('/student', [StudentController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
-
+Route::get('/file-upload', [FileUploadController::class, 'index'])->name('file-upload.index');
 // Fallback route
 
 Route::fallback(function () {
