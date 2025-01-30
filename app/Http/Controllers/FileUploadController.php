@@ -21,11 +21,12 @@ class FileUploadController extends Controller
 
         // $res = $file->store('/', 'local');
 
-        $res = $file->store('/', 'public');
+        // $res = $file->store('/', 'public');
+        $res = $file->store('/', 'public_dir');
 
         if($res){
             $file = new File();
-            $file->file_path = $res;
+            $file->file_path = 'uploads/'.$res;
             $file->save();
 
             return response()->json([

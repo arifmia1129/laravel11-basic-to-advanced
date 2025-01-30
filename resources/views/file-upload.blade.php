@@ -28,7 +28,7 @@
                         <tr>
                             @foreach ($files as $file)
                             <td>
-                                <img width="100" src="/storage/{{ $file->file_path }}" alt="">
+                                <img width="100" src="{{ asset($file->file_path) }}" alt="">
                             </td>
                         @endforeach
                         </tr>
