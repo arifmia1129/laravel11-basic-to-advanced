@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Str;
 
 class FileUploadController extends Controller
 {
@@ -22,7 +23,13 @@ class FileUploadController extends Controller
         // $res = $file->store('/', 'local');
 
         // $res = $file->store('/', 'public');
-        $res = $file->store('/', 'public_dir');
+        // $res = $file->store('/', 'public_dir');
+
+        $newFileName = 'images'. Str::uuid();
+        $originalExtension = $file->getClientOriginalExtension();
+        $formatFileName =$newFileName.'.'.$originalExtension;
+
+        $res = $file->storeAs('/', $formatFileName, 'public_dir');
 
         if($res){
             $file = new File();
