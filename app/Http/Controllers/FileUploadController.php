@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File as HandleFile;
 use Str;
 
 class FileUploadController extends Controller
 {
     function index (){
         $files = File::orderBy("created_at","desc")->get();
+
+        $isFileExists = File::find(3);
+
+        if($isFileExists) {
+            HandleFile::delete(public_path($isFileExists->file_path));
+            $isFileExists->delete();
+        }
         // dd($files);
         return view("file-upload", ['files' => $files]);
     }
