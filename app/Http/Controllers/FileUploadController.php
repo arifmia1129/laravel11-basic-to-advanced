@@ -24,6 +24,11 @@ class FileUploadController extends Controller
     }
 
     function store (Request $request){
+
+        $request->validate([
+            'file'=>['required', 'image']
+        ]);
+
         $file = $request->file("file");
 
         // $res = Storage::disk('local')->put('/', $file);

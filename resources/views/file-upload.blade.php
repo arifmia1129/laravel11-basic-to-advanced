@@ -16,6 +16,11 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">File</label>
                             <input type="file" class="form-control" id="file" name="file" placeholder="Upload your file" >
+                            @error('file')
+                                <p class="text-danger">
+                                    <small>{{ $message }}</small>
+                                </p>
+                            @enderror
                         </div>
                         
                         <div class="d-grid">
