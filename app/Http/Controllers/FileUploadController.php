@@ -49,7 +49,9 @@ class FileUploadController extends Controller
             $file->file_path = 'uploads/'.$res;
             $file->save();
 
-            return redirect()->back();
+            // return redirect()->back();
+            // return redirect()->route('home');
+            return redirect()->away('https://www.google.com.au');
         }else {
             return response()->json([
                 'success'=> false,
