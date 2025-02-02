@@ -49,11 +49,7 @@ class FileUploadController extends Controller
             $file->file_path = 'uploads/'.$res;
             $file->save();
 
-            return response()->json([
-               'success' => true,
-               'message'=> 'File uploaded successfully',
-               'data'=> $file,
-            ]);
+            return redirect()->back();
         }else {
             return response()->json([
                 'success'=> false,
