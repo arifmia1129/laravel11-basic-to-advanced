@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JoinController;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -146,6 +147,9 @@ Route::get('/file-upload', [FileUploadController::class, 'index'])->name('file-u
 Route::post('/file-upload', [FileUploadController::class,'store'])->name('file-upload.store');
 Route::get('file-download', [FileUploadController::class, 'downloadFile'])->name('file-upload.download');
 // Fallback route
+
+
+Route::get('join', [JoinController::class, 'index'])->name('join.index');
 
 Route::fallback(function () {
     return 'Ups! Search results are not available';
